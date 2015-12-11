@@ -1,0 +1,47 @@
+extends layout
+block content
+
+  table.table.table-bordered
+    thead
+      tr.tr-bag
+        th Image
+        th Name / Brand
+        th Price
+        th Action
+      tbody
+        for item in bag
+          tr.bag-items(id='row-#{item.id}')
+            td
+              img.img-polaroid(src='#{item.image}')
+            td
+              img.store-logo-big(src='#{item.logo}')
+              .lead
+                a(href='#{item.url}') #{item.name}
+            td
+              .lead #{item.price}
+            td
+              button.btn.btn-mini.btn-danger(id='item-#{item.id}')
+                i.icon-trash
+                |  Remove
+              p
+                .fb-like(data-href='#{item.url}', data-send='false', data-layout='button_count', data-width='450', data-show-faces='true')
+                .g-plusone(data-size='medium', data-href='#{item.url}')
+          script(type='text/javascript')
+            $('#item-#{item.id}').click(function() {
+              $.ajax({
+                type: 'delete',
+                url: '/bag',
+                data: '#{item}',
+                success: function() {
+                  $('#bagcount').text(parseInt($('#bagcount').text()) - 1);
+                }
+              });
+              toastr.error('An item has been removed from your bag.');
+              $('#row-#{item.id}').remove();
+            });
+          script(type='text/javascript')
+            (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
