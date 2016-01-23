@@ -1,6 +1,7 @@
+#ShopMultiple
 Shop from multiple stores
 
-### TODO
+### To Dos:
 1. Replace jsdom with cheerio
 2. iOS7 style theme + Bootstrap
 3. Convert jade to handlebars
