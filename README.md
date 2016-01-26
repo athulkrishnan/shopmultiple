@@ -1,6 +1,8 @@
 #ShopMultiple
 Shop from multiple stores
 
+Based on ExpressJS
+
 ### To Dos:
 1. Replace jsdom with cheerio
 2. iOS7 style theme + Bootstrap
